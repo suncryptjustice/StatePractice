@@ -10,31 +10,12 @@ function App() {
   function updateInfo(event) {
     const { value, name } = event.target;
 
-    if (name == "fName") {
-      setContact((prevValue) => {
-        return {
-          fName: value,
-          lName: prevValue.lName,
-          email: prevValue.email
-        };
-      });
-    } else if (name == "lName") {
-      setContact((prevValue) => {
-        return {
-          fName: prevValue.fName,
-          lName: value,
-          email: prevValue.email
-        };
-      });
-    } else if (name == "email") {
-      setContact((prevValue) => {
-        return {
-          fName: prevValue.fName,
-          lName: prevValue.lName,
-          email: value
-        };
-      });
-    }
+    setContact((prev) => {
+      return {
+        ...prev,
+        [name]: value
+      };
+    });
   }
 
   return (
